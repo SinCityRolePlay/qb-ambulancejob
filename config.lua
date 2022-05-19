@@ -2,7 +2,7 @@ Config = {}
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add setr UseTarget true)
 Config.MinimalDoctors = 2 -- How many players with the ambulance job to prevent the hospital check-in system from being used
 Config.WipeInventoryOnRespawn = true -- Enable or disable removing all the players items when they respawn at the hospital
-Config.Helicopter = "polmav" -- Helicopter model that players with the ambulance job can use
+Config.Helicopter = "ec145med" -- Helicopter model that players with the ambulance job can use
 Config.BillCost = 2000 -- Price that players are charged for using the hospital check-in system
 Config.DeathTime = 300 -- How long the timer is for players to bleed out completely and respawn at the hospital
 Config.PainkillerInterval = 60 -- Set the length of time painkillers last (per one)
@@ -37,7 +37,7 @@ Config.Locations = { -- Edit the various interaction points for players or creat
 	    [2] = vector3(-254.54, 6331.78, 32.43), -- paleto
     },
     ["duty"] = {
-        [1] = vector3(311.18, -599.25, 43.29),
+        [1] = vector3(304.29, -600.85, 43.28),
         [2] = vector3(-254.88, 6324.5, 32.58),
     },
     ["vehicle"] = {
@@ -49,31 +49,27 @@ Config.Locations = { -- Edit the various interaction points for players or creat
         [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
     ["armory"] = {
-        [1] = vector3(309.93, -602.94, 43.29),
+        [1] = vector3(306.84, -601.95, 43.28),
         [2] = vector3(-245.13, 6315.71, 32.82),
     },
     ["roof"] = {
         [1] = vector4(338.5, -583.85, 74.16, 245.5),
     },
     ["main"] = {
-        [1] = vector3(298.74, -599.33, 43.29),
+        [1] = vector3(331.62, -596.83, 43.28),
     },
     ["stash"] = {
         [1] = vector3(309.78, -596.6, 43.29),
     },
     ["beds"] = {
-        [1] = {coords = vector4(353.1, -584.6, 43.11, 152.08), taken = false, model = 1631638868},
-        [2] = {coords = vector4(356.79, -585.86, 43.11, 152.08), taken = false, model = 1631638868},
-        [3] = {coords = vector4(354.12, -593.12, 43.1, 336.32), taken = false, model = 2117668672},
-        [4] = {coords = vector4(350.79, -591.8, 43.1, 336.32), taken = false, model = 2117668672},
-        [5] = {coords = vector4(346.99, -590.48, 43.1, 336.32), taken = false, model = 2117668672},
-        [6] = {coords = vector4(360.32, -587.19, 43.02, 152.08), taken = false, model = -1091386327},
-        [7] = {coords = vector4(349.82, -583.33, 43.02, 152.08), taken = false, model = -1091386327},
-        [8] = {coords = vector4(326.98, -576.17, 43.02, 152.08), taken = false, model = -1091386327},
-	--- paleto
-	    [9] = {coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672},
-        [10] = {coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672},
-        [11] = {coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672},
+        [1] = {coords = vector4(311.13, -582.89, 43.53, 335.65), taken = false, model = 1631638868},
+        [2] = {coords = vector4(313.96, -579.05, 43.53, 164.5), taken = false, model = 1631638868},
+        [3] = {coords = vector4(314.58, -584.09, 43.53, 335.65), taken = false, model = 1631638868},
+        [4] = {coords = vector4(317.74, -585.29, 43.53, 335.65), taken = false, model = 1631638868},
+        [5] = {coords = vector4(319.47, -581.04, 43.53, 164.5), taken = false, model = 1631638868}, 
+        [6] = {coords = vector4(324.26, -582.48, 43.53, 166.5), taken = false, model = 1631638868}, 
+        [7] = {coords = vector4(322.57, -587.34, 43.53, 334.95), taken = false, model = 1631638868}, 
+        [8] = {coords = vector4(307.71, -581.85, 43.53, 328.18), taken = false, model = 1631638868},
     },
     ["stations"] = {
         [1] = {label = Lang:t('info.pb_hospital'), coords = vector4(304.27, -600.33, 43.28, 272.249)}
@@ -83,24 +79,31 @@ Config.Locations = { -- Edit the various interaction points for players or creat
 Config.AuthorizedVehicles = { -- Vehicles players can use based on their ambulance job grade level
 	-- Grade 0
 	[0] = {
-		["ambulance"] = "Ambulance",
+		["medic12"] = "Ambulance",
 	},
 	-- Grade 1
 	[1] = {
-		["ambulance"] = "Ambulance",
+		["medic12"] = "Ambulance",
 
 	},
 	-- Grade 2
 	[2] = {
-		["ambulance"] = "Ambulance",
+		["medic12"] = "Ambulance",
 	},
 	-- Grade 3
 	[3] = {
-		["ambulance"] = "Ambulance",
+		["medic12"] = "Ambulance",
 	},
 	-- Grade 4
 	[4] = {
-		["ambulance"] = "Ambulance",
+		["medic12"] = "Ambulance",
+    },
+    -- Grade 5 
+    [5] = {
+        ["medic12"] = "ambulance",
+	},
+    [6] = {
+        ["medic12"] = "ambulance",
 	}
 }
 
@@ -155,6 +158,22 @@ Config.Items = { -- Items found in the ambulance shop for players with the ambul
             info = {},
             type = "item",
             slot = 6,
+        },
+        [7] = {
+            name = "weapon_stungun",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 7,
+        },
+        [8] = {
+            name = "handcuffs",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 8,
         },
     }
 }

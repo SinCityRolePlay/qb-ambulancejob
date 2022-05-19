@@ -25,6 +25,13 @@ RegisterNetEvent('hospital:server:SendToBed', function(bedId, isRevive)
 	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 
+--[[RegisterNetEvent('hospital:server:SendToBeds', function(bedId)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	TriggerClientEvent('hospital:client:SendToBeds', src, bedId, Config.Locations["beds"][bedId])
+	TriggerClientEvent('hospital:client:SetBeds', -1, bedId, true)
+end)]]
+
 RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
@@ -150,7 +157,7 @@ RegisterNetEvent('hospital:server:RevivePlayer', function(playerId, isOldMan)
 	local oldMan = isOldMan or false
 	if Patient then
 		if oldMan then
-			if Player.Functions.RemoveMoney("cash", 5000, "revived-player") then
+			if Player.Functions.RemoveMoney("cash", 1500, "revived-player") then
 				Player.Functions.RemoveItem('firstaid', 1)
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['firstaid'], "remove")
 				TriggerClientEvent('hospital:client:Revive', Patient.PlayerData.source)
@@ -236,6 +243,20 @@ QBCore.Functions.CreateCallback('hospital:GetPlayerBleeding', function(source, c
 		cb(nil)
 	end
 end)
+
+--[[QBCore.Functions.CreateCallback('hospital:server:HasBandage', function(source, cb)
+	local src = source
+    local player = QBCore.Functions.GetPlayer(src)
+    local bandage = player.Functions.GetItemByName("bandage")
+    if bandage ~= nil then cb(true) else cb(false) end
+end)
+
+QBCore.Functions.CreateCallback('hospital:server:HasFirstAid', function(source, cb)
+	local src = source
+    local player = QBCore.Functions.GetPlayer(src)
+    local firstaid = player.Functions.GetItemByName("firstaid")
+    if firstaid ~= nil then cb(true) else cb(false) end
+end)]]
 
 -- Commands
 
@@ -354,6 +375,14 @@ QBCore.Functions.CreateUseableItem("bandage", function(source, item)
 	local Player = QBCore.Functions.GetPlayer(src)
 	if Player.Functions.GetItemByName(item.name) ~= nil then
 		TriggerClientEvent("hospital:client:UseBandage", src)
+	end
+end)
+
+QBCore.Functions.CreateUseableItem("dirty_bandage", function(source, item)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	if Player.Functions.GetItemByName(item.name) ~= nil then
+		TriggerClientEvent("hospital:client:UseDirtyBandage", src)
 	end
 end)
 
