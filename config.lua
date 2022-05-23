@@ -500,36 +500,36 @@ Config.Weapons = { -- Correspond weapon names to their class number
 }
 
 Config.VehicleSettings = { -- Enable or disable vehicle extras when pulling them from the ambulance job vehicle spawner
-    ["car1"] = { -- Model name
+    ["medic12"] = { -- Model name
         ["extras"] = {
-            ["1"] = false, -- on/off
-            ["2"] = true,
-            ["3"] = true,
-            ["4"] = true,
-            ["5"] = true,
-            ["6"] = true,
-            ["7"] = true,
-            ["8"] = true,
-            ["9"] = true,
-            ["10"] = true,
-            ["11"] = true,
-            ["12"] = true,
+            ["1"] = true, -- on/off
+            --["2"] = true,
+            --["3"] = true,
+            --["4"] = true,
+            --["5"] = true,
+            --["6"] = true,
+            --["7"] = false,
+            --["8"] = false,
+            --["9"] = false,
+            --["10"] = false,
+            --["11"] = false,
+            --["12"] = false,
         }
     },
-    ["car2"] = {
+    ["ec145med"] = {
         ["extras"] = {
             ["1"] = false,
             ["2"] = true,
-            ["3"] = true,
+            --["3"] = true,
             ["4"] = true,
-            ["5"] = true,
+            --["5"] = true,
             ["6"] = true,
             ["7"] = true,
-            ["8"] = true,
-            ["9"] = true,
-            ["10"] = true,
-            ["11"] = true,
-            ["12"] = true,
+            --["8"] = true,
+            --["9"] = true,
+            --["10"] = true,
+            --["11"] = true,
+            --["12"] = true,
         }
     }
 }
