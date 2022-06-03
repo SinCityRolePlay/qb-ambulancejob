@@ -204,7 +204,25 @@ CreateThread(function()
                     end
 
                     if IsControlJustPressed(0, 47) and not emsNotified then
-                        TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
+                        --TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
+                        local data = exports['cd_dispatch']:GetPlayerInfo()
+                        TriggerServerEvent('cd_dispatch:AddNotification', {
+                            job_table = {'police', 'ambulance' }, 
+                            coords = data.coords,
+                            title = '10-47 - Civilian injured',
+                            message = 'A '..data.sex..' is in need of medical assistance near '..data.street, 
+                            flash = 1,
+                            unique_id = tostring(math.random(0000000,9999999)),
+                            blip = {
+                                sprite = 431, 
+                                scale = 1.2, 
+                                colour = 3,
+                                flashes = true, 
+                                text = '911 - Someone is in need of medical assistance',
+                                time = (5*60*1000),
+                                sound = 1,
+                            }
+                        })
                         emsNotified = true
                     end
                 end
